@@ -168,5 +168,43 @@ describe('Disasm', function() {
       push r8
       push [r8]
     */});
+
+    test('pop', function() {
+      this.pop('rax');
+      this.pop('rbx');
+      this.pop('rcx');
+      this.pop('r8');
+      this.pop([ 'r8' ]);
+    }, function() {/*
+      pop rax
+      pop rbx
+      pop rcx
+      pop r8
+      pop [r8]
+    */});
+
+    test('ret', function() {
+      this.ret(8);
+      this.ret();
+    }, function() {/*
+      ret 0x8
+      ret
+    */});
+
+    test('xchg', function() {
+      this.xchg('rax', 'rbx');
+      this.xchg('rcx', 'rbx');
+      this.xchg('rcx', [ 'rbx' ]);
+    }, function() {/*
+      xchg rax, rbx
+      xchg rcx, rbx
+      xchg [rbx], rcx
+    */});
+
+    test('lea', function() {
+      this.lea('rax', [ 'rbx', 'rcx', 3]);
+    }, function() {/*
+      lea rax, [rbx, rcx, 0x3]
+    */});
   });
 });
