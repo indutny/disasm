@@ -1,0 +1,31 @@
+{
+  "name": "disasm",
+  "version": "1.0.0",
+  "description": "Disassembler",
+  "main": "lib/disasm.js",
+  "scripts": {
+    "test": "mocha --reporter=spec test/**/*-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:indutny/disasm.js"
+  },
+  "keywords": [
+    "disasm",
+    "jit",
+    "assembler",
+    "x86_64"
+  ],
+  "author": "Fedor Indutny <fedor@indutny.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/indutny/disasm.js/issues"
+  },
+  "homepage": "https://github.com/indutny/disasm.js",
+  "devDependencies": {
+    "mocha": "^2.0.1"
+  },
+  "dependencies": {
+    "jit.js": "^0.8.19"
+  }
+}
