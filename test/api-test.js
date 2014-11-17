@@ -127,6 +127,9 @@ describe('Disasm', function() {
 
       this.mov('r8', [ 'rbx', 'r15', 8 ]);
       this.mov([ 'r9', 'rax', 8 ], 'r15');
+
+      // Immediate
+      this.mov('r8', -0xdead);
     }, function() {/*
       mov rax, rbx
       mov rax, [rbx]
@@ -143,7 +146,7 @@ describe('Disasm', function() {
       mov [rbx, rax, 0x8], rax
       mov r8, [rbx, r15, 0x8]
       mov [r9, rax, 0x8], r15
-      mov r8, 0x01
+      mov r8, -0xdead
     */});
 
    test('nop', function() {
@@ -157,11 +160,13 @@ describe('Disasm', function() {
       this.push('rbx');
       this.push('rcx');
       this.push('r8');
+      this.push([ 'r8' ]);
     }, function() {/*
       push rax
       push rbx
       push rcx
       push r8
+      push [r8]
     */});
   });
 });
