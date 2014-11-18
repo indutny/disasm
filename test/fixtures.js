@@ -158,3 +158,14 @@ function testUnOp(type, isRax) {
   }, expected);
 }
 exports.testUnOp = testUnOp;
+
+function testFpBinary(type) {
+  test(type, function() {
+    this[type]('xmm3', 'xmm4');
+    this[type]('xmm11', ['rcx', 13]);
+  }, function() {/*
+    v{type} xmm3, xmm4
+    v{type} xmm11, [rcx, 0xd]
+  */}.toString().replace(/{type}/g, type));
+}
+exports.testFpBinary = testFpBinary;
