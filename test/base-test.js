@@ -32,7 +32,7 @@ describe('Disasm', function() {
 
       // Immediate
       this.mov('r8', -0xdead);
-      this.mov('r8', new Buffer('deadbeefabbadead', 'hex'));
+      this.mov('r8', new Buffer('addebaabefbeadde', 'hex'));
     }, function() {/*
       mov rax, rbx
       mov rax, [rbx]
