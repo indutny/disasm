@@ -142,3 +142,19 @@ function testShiftOp(type) {
   */}.toString().replace(/{type}/g, type));
 }
 exports.testShiftOp = testShiftOp;
+
+function testUnOp(type, isRax) {
+  var expected = function() {/*
+    {type} rax, rax
+    {type} rax, r9
+  */}.toString().replace(/{type}/g, type);
+
+  if (!isRax)
+    expected = expected.replace(/ rax,/g, '');
+
+  test(type, function() {
+    this[type]('rax');
+    this[type]('r9');
+  }, expected);
+}
+exports.testUnOp = testUnOp;
