@@ -53,5 +53,27 @@ describe('Disasm', function() {
     */});
 
     // TODO(indutny): jl, set, cmov
+    test('cmov', function() {
+      jc.forEach(function(cond) {
+        this.cmov(cond, 'rax', 'rbx');
+      }, this);
+    }, function() {/*
+      cmov o, rax, rbx
+      cmov no, rax, rbx
+      cmov b, rax, rbx
+      cmov nb, rax, rbx
+      cmov z, rax, rbx
+      cmov nz, rax, rbx
+      cmov be, rax, rbx
+      cmov nbe, rax, rbx
+      cmov ns, rax, rbx
+      cmov ns, rax, rbx
+      cmov p, rax, rbx
+      cmov np, rax, rbx
+      cmov l, rax, rbx
+      cmov nl, rax, rbx
+      cmov le, rax, rbx
+      cmov nle, rax, rbx
+    */});
   });
 });
