@@ -32,6 +32,7 @@ describe('Disasm', function() {
 
       // Immediate
       this.mov('r8', -0xdead);
+      this.mov('r8', new Buffer('deadbeefabbadead', 'hex'));
     }, function() {/*
       mov rax, rbx
       mov rax, [rbx]
@@ -49,6 +50,7 @@ describe('Disasm', function() {
       mov r8, [rbx, r15, 0x8]
       mov [r9, rax, 0x8], r15
       mov r8, -0xdead
+      mov r8, 0xdeadbeefabbadead
     */});
 
    test('nop', function() {

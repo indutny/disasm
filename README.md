@@ -1,5 +1,42 @@
 # Disassembler
 
+## Usage
+
+```javascript
+var disasm = require('disasm');
+
+var code = new Buffer(
+    '48554889e5488b4510a8010f85360000' +
+        '00488b5d18f6c3010f85290000004839' +
+        'd80f8f1000000048b8f109e152010000' +
+        '004889ec485dc348b8010ae152010000' +
+        '004889ec485dc3cc',
+    'hex');
+var out = disasm.create().disasm(code)
+console.log(disasm.stringify(out));
+/*
+  push rbp
+  mov rbp, rsp
+  mov rax, [rbp, 0x10]
+  test al, 0x1
+  far-jcc nz, 0x36
+  mov rbx, [rbp, 0x18]
+  test ebx, 0x1
+  far-jcc nz, 0x29
+  cmp rax, rbx
+  far-jcc nle, 0x10
+  mov rax, 0xf109e15201000000
+  mov rsp, rbp
+  pop rbp
+  ret
+  mov rax, 0x010ae15201000000
+  mov rsp, rbp
+  pop rbp
+  ret
+  int3
+*/
+```
+
 #### LICENSE
 
 This software is licensed under the MIT License.

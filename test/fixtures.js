@@ -3,31 +3,6 @@ var jit = require('jit.js');
 
 var disasm = require('../');
 
-function hex(num) {
-  if (num < 0)
-    return '-0x' + (-num).toString(16);
-  else
-    return '0x' + num.toString(16);
-}
-
-function stringify(out) {
-  return out.map(function(instr) {
-    return instr.type + ' ' + instr.operands.map(function(operand) {
-      if (Array.isArray(operand))
-        return '[' + operand.map(function(part) {
-          if (typeof part === 'number')
-            return hex(part);
-          else
-            return part;
-        }).join(', ') + ']';
-      else if (typeof operand === 'number')
-        return hex(operand);
-      else
-        return operand;
-    }).join(', ');
-  }).join('\n');
-}
-
 function equalLines(actual, expected) {
   if (actual === expected)
     return;
@@ -97,7 +72,7 @@ function test(name, body, expected) {
     reloc.resolve(reloc.buffer);
     var out = disasm.create().disasm(reloc.buffer);
     expected = expected.toString().replace(/^function[^{]+{\/\*|\*\/}$/g, '');
-    equalLines(strip(stringify(out)), strip(expected));
+    equalLines(strip(disasm.stringify(out)), strip(expected));
   });
 }
 exports.test = test;
