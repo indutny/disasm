@@ -1,6 +1,6 @@
 {
   "name": "disasm",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Disassembler",
   "main": "lib/disasm.js",
   "scripts": {
