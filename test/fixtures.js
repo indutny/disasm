@@ -92,25 +92,18 @@ function strip(source) {
 exports.strip = strip;
 
 function test(name, body, expected) {
-  it('should disasm ' + name, function() {
-    var out = disasm.create().disasm(jit.generate(body).buffer);
+  it('should support ' + name, function() {
+    var reloc = jit.generate(body);
+    reloc.resolve(reloc.buffer);
+    var out = disasm.create().disasm(reloc.buffer);
     expected = expected.toString().replace(/^function[^{]+{\/\*|\*\/}$/g, '');
     equalLines(strip(stringify(out)), strip(expected));
   });
 }
 exports.test = test;
 
-function testBinOp(type) {
-  test(type, function() {
-    this[type]('rax', 'r9');
-    this[type]('rax', 9);
-    this[type]('rax', 0xf1f2);
-    this[type]('rbx', 'rcx');
-    this[type]('rbx', 9);
-    this[type]('rbx', 0xf1f2);
-    this[type]([ 'rbx', 0 ], 'r9');
-    this[type]('r9', [ 'rbx', 0 ]);
-  }, function() {/*
+function testBinOp(type, binary, noRm) {
+  var expected = function() {/*
     {type} rax, r9
     {type} al, 0x9
     {type} rax, 0xf1f2
@@ -119,7 +112,23 @@ function testBinOp(type) {
     {type} rbx, 0xf1f2
     {type} [rbx, 0x0], r9
     {type} r9, [rbx, 0x0]
-  */}.toString().replace(/{type}/g, type));
+  */}.toString().replace(/{type}/g, type);
+  if (!binary)
+    expected = expected.replace(/al/g, 'rax').replace(/ebx/g, 'rbx');
+  if (noRm)
+    expected = expected.split(/\n/g).slice(0, -2).join('\n');
+
+  test(type, function() {
+    this[type]('rax', 'r9');
+    this[type]('rax', 9);
+    this[type]('rax', 0xf1f2);
+    this[type]('rbx', 'rcx');
+    this[type]('rbx', 9);
+    this[type]('rbx', 0xf1f2);
+    this[type]([ 'rbx', 0 ], 'r9');
+    if (!noRm)
+      this[type]('r9', [ 'rbx', 0 ]);
+  }, expected);
 }
 exports.testBinOp = testBinOp;
 

@@ -5,9 +5,9 @@ var testShiftOp = fixtures.testShiftOp;
 
 describe('Disasm', function() {
   describe('#Binary', function() {
-    testBinOp('and');
-    testBinOp('or');
-    testBinOp('xor');
+    testBinOp('and', true);
+    testBinOp('or', true);
+    testBinOp('xor', true);
 
     test('neg', function() {
       this.neg('rax');
