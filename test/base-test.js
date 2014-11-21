@@ -59,11 +59,17 @@ describe('Disasm', function() {
       mov rbx, r15
     */});
 
-   test('nop', function() {
-     this.nop();
-   }, function() {/*
-     nop
-   */});
+    test('imm mov on r15', function() {
+      this.mov('r15', new Buffer('addebaabefbeadde', 'hex'));
+    }, function() {/*
+      mov r15, 0xdeadbeefabbadead
+    */})
+
+    test('nop', function() {
+      this.nop();
+    }, function() {/*
+      nop
+    */});
 
     test('push', function() {
       this.push('rax');
