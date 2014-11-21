@@ -33,6 +33,10 @@ describe('Disasm', function() {
       // Immediate
       this.mov('r8', -0xdead);
       this.mov('r8', new Buffer('addebaabefbeadde', 'hex'));
+
+      // High registers
+      this.mov('r14', 'rax');
+      this.mov('rbx', 'r15');
     }, function() {/*
       mov rax, rbx
       mov rax, [rbx]
@@ -51,6 +55,8 @@ describe('Disasm', function() {
       mov [r9, rax, 0x8], r15
       mov r8, -0xdead
       mov r8, 0xdeadbeefabbadead
+      mov r14, rax
+      mov rbx, r15
     */});
 
    test('nop', function() {
