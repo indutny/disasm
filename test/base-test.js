@@ -61,8 +61,10 @@ describe('Disasm', function() {
 
     test('imm mov on r15', function() {
       this.mov('r15', new Buffer('addebaabefbeadde', 'hex'));
+      this.mov('r15', 0xbc);
     }, function() {/*
       mov r15, 0xdeadbeefabbadead
+      mov r15, 0xbc
     */})
 
     test('nop', function() {
