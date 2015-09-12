@@ -10,6 +10,10 @@ describe('Disasm', function() {
       // mod=0
       this.mov('rax', [ 'rbx' ]);
       this.mov([ 'rax' ], 'rbx');
+      this.mov('rax', [ 'rip', 0xdead ]);
+      this.mov([ 'rip', 0xdead ], 'rbx');
+      this.mov('r15', [ 'rip', 0xdead ]);
+      this.mov([ 'rip', 0xdead ], 'r15');
 
       // mod=1
       this.mov('rax', [ 'rbx', 8 ]);
@@ -41,6 +45,10 @@ describe('Disasm', function() {
       mov rax, rbx
       mov rax, [rbx]
       mov [rax], rbx
+      mov rax, [rip, 0xdead]
+      mov [rip, 0xdead], rbx
+      mov r15, [rip, 0xdead]
+      mov [rip, 0xdead], r15
       mov rax, [rbx, 0x8]
       mov [rax, 0x8], rbx
       mov rax, [rbx, -0x8]

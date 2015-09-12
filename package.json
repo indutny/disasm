@@ -26,6 +26,6 @@
     "mocha": "^2.0.1"
   },
   "dependencies": {
-    "jit.js": "^0.8.19"
+    "jit.js": "^1.0.0"
   }
 }
