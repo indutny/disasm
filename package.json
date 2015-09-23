@@ -25,7 +25,7 @@
   "devDependencies": {
     "mocha": "^2.0.1"
   },
-  "dependencies": {
+  "devDependencies": {
     "jit.js": "^1.0.0"
   }
 }
