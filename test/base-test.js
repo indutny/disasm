@@ -75,6 +75,14 @@ describe('Disasm', function() {
       mov r15, 0xbc
     */})
 
+    test('movzxb/movzxw', function() {
+      this.movzxb('r15', 'r8');
+      this.movzxw('rax', 'r12');
+    }, function() {/*
+      movzxb r15, r8
+      movzxw rax, r12
+    */})
+
     test('nop', function() {
       this.nop();
     }, function() {/*
