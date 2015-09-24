@@ -17,11 +17,13 @@ describe('Disasm', function() {
     test('movq', function() {
       this.movq('xmm1', 'r9');
       this.movq('r9', 'xmm1');
+      this.movq('xmm2', 'xmm1');
       this.movq([ 'r9', 8 ], 'xmm1');
       this.movq('xmm3', [ 'r9', 8 ]);
     }, function() {/*
       vmovq xmm1, r9
       vmovq r9, xmm1
+      vmovq xmm2, xmm1
       vmovq [r9, 0x8], xmm1
       vmovq xmm3, [r9, 0x8]
     */});
