@@ -84,9 +84,18 @@ describe('Disasm', function() {
     */})
 
     test('nop', function() {
-      this.nop();
+      for (var i = 1; i < 9; i++) {
+        this.nop(i);
+      }
     }, function() {/*
       nop
+      nop
+      nop [eax]
+      nop [eax, 0x0]
+      nop [eax, eax, 0x0]
+      nop [eax, eax, 0x0]
+      nop [eax, 0x0]
+      nop [eax, eax, 0x0]
     */});
 
     test('push', function() {
