@@ -39,13 +39,13 @@ describe('Disasm', function() {
     */});
 
     test('movd', function() {
-      this.movd('xmm1', 'rcx');
+      this.movd('xmm1', 'r15');
       this.movd('rcx', 'xmm1');
       this.movd('xmm2', 'xmm1');
       this.movd([ 'rcx', 8 ], 'xmm1');
       this.movd('xmm3', [ 'rcx', 8 ]);
     }, function() {/*
-      vmovd xmm1, ecx
+      vmovd xmm1, r15
       vmovd ecx, xmm1
       vmovq xmm2, xmm1
       vmovd [ecx, 0x8], xmm1
