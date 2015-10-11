@@ -55,49 +55,73 @@ describe('Disasm', function() {
     test('cvtsd2si', function() {
       this.cvtsd2si('r9', 'xmm1');
       this.cvtsd2si('r14', [ 'r15', 5 ]);
+      this.cvtsd2sil('rax', 'xmm1');
+      this.cvtsd2sil('rbx', [ 'r15', 5 ]);
     }, function() {/*
       vcvtsd2si r9, xmm1
       vcvtsd2si r14, [r15, 0x5]
+      vcvtsd2si eax, xmm1
+      vcvtsd2si ebx, [r15, 0x5]
     */});
 
     test('cvtss2si', function() {
       this.cvtss2si('r9', 'xmm1');
       this.cvtss2si('r14', [ 'r15', 5 ]);
+      this.cvtss2sil('rax', 'xmm1');
+      this.cvtss2sil('rbx', [ 'r15', 5 ]);
     }, function() {/*
       vcvtss2si r9, xmm1
       vcvtss2si r14, [r15, 0x5]
+      vcvtss2si eax, xmm1
+      vcvtss2si ebx, [r15, 0x5]
     */});
 
     test('cvttsd2si', function() {
       this.cvttsd2si('r9', 'xmm1');
       this.cvttsd2si('r14', [ 'r15', 5 ]);
+      this.cvttsd2sil('rax', 'xmm1');
+      this.cvttsd2sil('rbx', [ 'r15', 5 ]);
     }, function() {/*
       vcvttsd2si r9, xmm1
       vcvttsd2si r14, [r15, 0x5]
+      vcvttsd2si eax, xmm1
+      vcvttsd2si ebx, [r15, 0x5]
     */});
 
     test('cvttss2si', function() {
       this.cvttss2si('r9', 'xmm1');
       this.cvttss2si('r14', [ 'r15', 5 ]);
+      this.cvttss2sil('rax', 'xmm1');
+      this.cvttss2sil('rbx', [ 'r15', 5 ]);
     }, function() {/*
       vcvttss2si r9, xmm1
       vcvttss2si r14, [r15, 0x5]
+      vcvttss2si eax, xmm1
+      vcvttss2si ebx, [r15, 0x5]
     */});
 
     test('cvtsi2sd', function() {
       this.cvtsi2sd('xmm1', 'r9');
       this.cvtsi2sd('xmm3', [ 'r15', 5 ]);
+      this.cvtsi2sdl('xmm1', 'rax');
+      this.cvtsi2sdl('xmm3', [ 'rbx', 5 ]);
     }, function() {/*
       vcvtsi2sd xmm1, r9
       vcvtsi2sd xmm3, [r15, 0x5]
+      vcvtsi2sd xmm1, eax
+      vcvtsi2sd xmm3, [ebx, 0x5]
     */});
 
     test('cvtsi2ss', function() {
       this.cvtsi2ss('xmm1', 'r9');
       this.cvtsi2ss('xmm3', [ 'r15', 5 ]);
+      this.cvtsi2ssl('xmm1', 'rax');
+      this.cvtsi2ssl('xmm3', [ 'rbx', 5 ]);
     }, function() {/*
       vcvtsi2ss xmm1, r9
       vcvtsi2ss xmm3, [r15, 0x5]
+      vcvtsi2ss xmm1, eax
+      vcvtsi2ss xmm3, [ebx, 0x5]
     */});
 
     test('roundsd', function() {

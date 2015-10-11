@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/indutny/disasm.js",
   "devDependencies": {
-    "jit.js": "^1.4.0"
+    "jit.js": "^1.7.1"
   }
 }
