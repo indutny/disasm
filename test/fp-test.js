@@ -173,5 +173,9 @@ describe('Disasm', function() {
     testFpBinary('mulss');
     testFpBinary('subss');
     testFpBinary('divss');
+
+    testFpBinary('pcmpeqd');
+    testFpBinary('andpd');
+    testFpBinary('xorpd');
   });
 });
